@@ -17,10 +17,10 @@ set_global_assignment -name QIP_FILE rtl/pll.qip
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/video/skullxbo_sos2_sync.sv
 # rtl/video/skullxbo_testpat.sv (a bring-up test pattern) is deliberately not
 # listed: nothing instantiates it.
-# Analog-output alignment (CRT H-Size / H-Position, VGA H/V-Shift), outside the
-# core.  analog_hsize.sv is Umberto Parisi's (rmonic79) line-buffer resampler,
-# used unchanged — see NOTICE.md.
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/video/analog_hsize.sv
+# CRT Adjust (H-Size / H-Position / V-Shift), outside the core.  crt_adjust.sv
+# is Umberto Parisi's (rmonic79) line-buffer engine from MiSTer-CRT-Adjust
+# c682de9, with the four adaptations listed in its header — see NOTICE.md.
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/video/crt_adjust.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/video/skullxbo_analog_adjust.sv
 
 # ============================================================================
