@@ -16,7 +16,8 @@ The two boards talk over the four-wire **J1 cable** between a pair of Atari
 board), and the core models that serial link as the cable it is.
 
 The core has been tested on DE10-Nano hardware by a number of users, with no
-issues reported.
+issues reported. The current build replaces the analog-output alignment page
+with CRT Adjust (see the OSD table below), checked on a CRT.
 
 ## Supported ROM sets
 
@@ -105,18 +106,17 @@ count, as the real board does.
 | Aspect ratio | Original / Full Screen / two user ratios |
 | Orientation | Original / Flip |
 | Scale | Normal / V-Integer / HV-Integer / Narrower HV-Integer |
-| **Analog alignment** (page) | CRT H-Size, CRT H-Position, Analog VGA H-Shift, Analog VGA V-Shift |
+| **CRT Adjust** (page) | CRT Adjust Off / On; while On, CRT H-Size, CRT H-Position and CRT V-Shift |
 | Service | the cabinet's self-test switch |
 | Reset | core reset |
 
-The analog alignment page is the same as in the
-[Arcade-Badlands_MiSTer](https://github.com/MiSTer-devel/Arcade-Badlands_MiSTer),
-[Arcade-Toobin_MiSTer](https://github.com/MiSTer-devel/Arcade-Toobin_MiSTer),
-[Arcade-Klax_MiSTer](https://github.com/MiSTer-devel/Arcade-Klax_MiSTer) and
-[Arcade-Xybots_MiSTer](https://github.com/MiSTer-devel/Arcade-Xybots_MiSTer)
-cores, for centring and sizing the picture on an analog CRT. It works on the
-output only: the core's own raster, pixel clock and refresh rate are
-untouched, and at the default settings it is a bit-exact pass-through.
+The CRT Adjust page is Umberto Parisi's (rmonic79)
+[MiSTer-CRT-Adjust](https://github.com/rmonic79/MiSTer-CRT-Adjust), for
+centring and sizing the picture on an analog CRT. It works on the output only:
+the core's own raster, pixel clock and refresh rate are untouched. Off (the
+default) is a bit-exact pass-through, and the stage stays off whenever the
+framework forces the scandoubler. H-Position moves the picture inside a native
+HSync, so it cannot desync a monitor.
 
 ## Hardware baseline
 
@@ -327,7 +327,7 @@ keep their own notices; `NOTICE.md` is the full list.
 | T65 (6502, the sound CPU) | Daniel Wallner, with fixes by Mike Johnson, Wolfgang Scherr and Morten Leikvoll (OpenCores / FPGAArcade) | BSD-style |
 | jt51 (YM2151) | Jose Tejada (jotego), <https://github.com/jotego/jt51> | GPL-3.0-or-later |
 | `klax_oki6295.v` (MSM6295, the source of `rtl/sound/skullxbo_oki.sv`) | the Arcade-Klax_MiSTer authors | GPL-2.0-or-later |
-| analog_hsize (CRT H-Size / H-Position resampler) | Umberto Parisi (rmonic79), Arcade-Raiden_MiSTer | GPL-3.0-or-later |
+| crt_adjust (CRT Adjust: H-Size / H-Position / V-Shift) | Umberto Parisi (rmonic79), [MiSTer-CRT-Adjust](https://github.com/rmonic79/MiSTer-CRT-Adjust) `c682de9` | GPL-3.0-or-later |
 | Altera/Intel PLL megafunction | Intel Corporation (generated IP) | Intel FPGA IP licence, as generated |
 
 The memory path, the MiSTer glue, the 68000 wrapper, the SOS-2 raster and most

@@ -10,7 +10,7 @@ Every file keeps its original header.
 |---|---|---|---|
 | MiSTer framework (`sys_top`, `hps_io`, `arcade_video`, `video_freak`, `ascal`, PLL config, …) | Till Harbaum, Alexey Melnikov (sorgelig), MiSTer-devel contributors | GPL-2.0-or-later / GPL-3.0-or-later per file | `sys/` (unmodified) |
 | Altera/Intel PLL megafunction instance | Intel Corporation (generated IP) | Intel FPGA IP licence, as generated | `rtl/pll.v`, `rtl/pll/` |
-| `analog_hsize.sv`: analog-VGA horizontal pixel-stretch line buffer | Umberto Parisi (rmonic79), Arcade-Raiden_MiSTer, via the Bad Lands core | GPL-3.0-or-later | `rtl/video/analog_hsize.sv` |
+| `crt_adjust.sv`: CRT Adjust line-buffer engine (H-Size / H-Position / V-Shift), core-side variant | Umberto Parisi (rmonic79), [MiSTer-CRT-Adjust](https://github.com/rmonic79/MiSTer-CRT-Adjust) commit `c682de9` | GPL-3.0-or-later | `rtl/video/crt_adjust.sv` (upstream text with four adaptations listed in its header) |
 | **fx68k**: cycle-exact MC68000 with its `microrom.mem` / `nanorom.mem` microcode (the 68000 at 245C) | Jorge Cwik (ijor) | GPL-3.0-or-later | `rtl/lib/fx68k/` (unmodified; its own `LICENSE`, `README.md` and `fx68k.txt` are kept) |
 | **T65**: 65xx-compatible CPU core, VHDL (the 6502A at 1D on the JSA Audio II board) | Daniel Wallner, Mike Johnson (MikeJ / FPGAArcade), Wolfgang Scherr, Morten Leikvoll | BSD-style (full notice at the head of `T65.vhd`) | `rtl/lib/T65/`: `T65_Pack.vhd`, `T65_MCode.vhd`, `T65_ALU.vhd`, `T65.vhd` unmodified. `T65_wrap.vhd` is this project's small flat-port wrapper (GPL-3.0-or-later) |
 | **JT51**: YM2151 (OPM) FM core (the YM2151 at 3A and the YM3012 at 5A) | José Tejada Gómez (jotego) | GPL-3.0-or-later | `rtl/lib/jt51/hdl/` (unmodified, used through its own `jt51.qip`) |
